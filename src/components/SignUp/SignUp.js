@@ -2,6 +2,17 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 
+let ddd = {
+   data: {
+      id: 23,
+      users: {
+         name: "farxod",
+         password: "123456",
+      },
+      info: ["aaa", "bbb", "ssss", "ooo"],
+   },
+};
+
 class SignUp extends Component {
    state = {
       login: "",
@@ -10,6 +21,22 @@ class SignUp extends Component {
       error: "",
       passState: false,
    };
+
+   componentDidMount() {
+      fetch("https://vast-mesa-55659.herokuapp.com/api/user-1s", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(ddd),
+      })
+         .then((res) => {
+            return res.json();
+         })
+         .then((data) => {
+            console.log(data);
+         });
+   }
 
    onChangeLogPass = (e) => {
       e.preventDefault();

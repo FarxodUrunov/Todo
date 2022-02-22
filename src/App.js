@@ -16,6 +16,7 @@ class App extends Component {
       };
       this.idMax = 1;
    }
+
    onAdd = (e) => {
       e.preventDefault();
 
@@ -52,10 +53,10 @@ class App extends Component {
 
    onEdit = (text1, id) => {
       this.state.data.filter((el) => {
-        if (id === el.id) {
-            return el.task = text1;
-		}
-		  return el
+         if (id === el.id) {
+            return (el.task = text1);
+         }
+         return el;
       });
       this.setState({
          //  data: [{ task: text1, id: id, check: false }, ...textUp],
